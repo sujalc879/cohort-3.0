@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #0d1117;
+}
+
+nav {
+    display:flex;
+    justify-content: space-evenly;
+    margin: 20px 0px 0px 0px;
+}
+
+.vscode ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.vscode ul > li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 10px;
+}
+
+.input_search {
+    background: #0d1117;
+    height: 30px;
+}
+
+.search ul li button {
+    padding: 5px 30px;
+    background: #0078d4;
+    cursor: pointer;
+}
+
+.search ul li:nth-child(1) {
+       margin: 6px 0px 0px 0px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0px 0px 0px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.version a {
+    color:#0078d4;
+    font-weight: bold;
+}
+
+.heading {
+    font-size: 65px;
+    margin: 50px 0px 0px 0px;
+}
+
+.description {
+    margin: 20px 0px 0px 0px;
+    font-size: 24px;
+    width: 647px;
+    text-align: center;
+    color: #9ba3b4;
+}
+
+.buttons {
+    display: flex;
+    margin: 30px 0px 0px 0px;
+    gap: 10px;
+}
+
+.windows_btn button {
+    font-size: 20px;
+    border-style: none;
+    border-radius: 3px;
+    padding: 15px 40px;
+    background: #0078d4;
+    cursor: pointer;
+}
+
+.github_btn {
+    font-size: 20px;
+    border-style: none;
+    border-radius: 3px;
+    padding: 15px 40px;
+    background:#25292e;
+    cursor: pointer;
+}
+
+.ss {
+    margin: 40px 0px 10px 0px;
+}
