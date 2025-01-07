@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="heading"><h1>Your Todos</h1></div>
+</header>
+<main>
+    <div class="component">
+        <div class="input">
+
+            <input type="text" placeholder="Add Your Todos Here">
+
+            <button onclick="addTodo()">Add Todo</button>
+
+        </div>
+
+
+        <div id="todos"></div>
+    </div>
+</main>
+
+<script>
+//    let divEl = document.createElement("div")
+   let olEl = document.createElement("ol")
+    function addTodo() {
+    let liEl = document.createElement("li");
+    let h2El = document.createElement("h2");
+    let delEl = document.createElement("button");
+    let editEl = document.createElement("button");
+    delEl.innerHTML = "Delete"
+    editEl.innerHTML = "Edit"
+    let inputEl = document.querySelector("input")
+    let value = inputEl.value;
+    h2El.innerHTML = value;
+    liEl.setAttribute("class", "liEl")
+    olEl.setAttribute("class", "olEl")
+    h2El.setAttribute("class", "h2El")
+    delEl.setAttribute("class", "delEl")
+    editEl.setAttribute("class", "editEl")
+
+    delEl.addEventListener("click", () => {
+        olEl.removeChild(liEl);
+    })
+
+    editEl.addEventListener("click", () => {
+        let p = prompt("Edit your Todo");
+        h2El.innerHTML = p
+    })
+
+    liEl.appendChild(h2El)
+    liEl.appendChild(delEl)
+    liEl.appendChild(editEl)
+    olEl.appendChild(liEl)
+    // divEl.appendChild(olEl);
+    document.querySelector("#todos").appendChild(olEl);
+
+    inputEl.value = "";
+    }
+</script>
+</body>
+</html>

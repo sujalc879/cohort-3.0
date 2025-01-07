@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <input type="text" name="input" placeholder="write your todo">
+    <button onclick="addTodo()">Add todo</button>
+    <script>
+        
+        
+        let divEl = document.createElement("div")
+        let olEl = document.createElement("ol")
+        let count = 1;
+        
+        function addTodo() {
+            let h2El = document.createElement("h2")
+            let liEl = document.createElement("li")
+            let delEl = document.createElement("button")
+            let editEl = document.createElement("button")
+            let inputEl = document.querySelector("input")
+            let value = inputEl.value;
+            h2El.innerHTML = value;
+            delEl.innerHTML = "Delete"
+            editEl.innerHTML = "Edit"
+            liEl.setAttribute("id", count);
+
+            delEl.addEventListener("click", () => {
+               document.querySelector("ol").removeChild(liEl)
+            })
+
+            editEl.addEventListener("click", () => {
+                let newValue = prompt("Edit your todo:", h2El.innerHTML);
+                if (newValue) {
+                    h2El.innerHTML = newValue;
+                }
+            })
+
+            count++;
+          
+            
+            
+            
+            // delEl.onclick = deleteTodo
+            
+            liEl.appendChild(h2El);
+            
+            liEl.appendChild(delEl);
+
+            liEl.appendChild(editEl);
+            
+            olEl.appendChild(liEl);
+            
+            divEl.appendChild(olEl);
+            
+            document.body.appendChild(divEl);
+
+            inputEl.value = "";
+        }
+        
+    </script>
+</body>
+</html>
