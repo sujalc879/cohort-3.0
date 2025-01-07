@@ -1,0 +1,11 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "Live Preview",
+			"workspacePath": "d:\\Cohort 3.0 ( Web Dev )\\Week 2\\Practice js",
+			"problemMatcher": [],
+			"label": "Live Preview: Run Server"
+		}
+	]
+}
