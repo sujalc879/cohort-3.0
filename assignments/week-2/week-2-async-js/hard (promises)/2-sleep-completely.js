@@ -4,7 +4,14 @@
  * the function should return a promise just like before
  */
 
-function sleep(milliseconds) {
+async function sleep(milliseconds) {
+    let promise = new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, milliseconds);
+    })
+    await promise;
+    return promise;
 }
 
 module.exports = sleep;

@@ -12,4 +12,22 @@
 // hello world my name is raman
 // ```
 
+const fs = require("fs");
 
+function main() {
+    fs.readFile("./week-2/week-2-async-js/medium/file.txt", "utf-8", (err, data) => {
+        let actualData = data.split(" ")
+        let result = [];
+
+        actualData.forEach((value) => {
+            if (value.length >= 1 ) {
+               result.push(value)
+                
+            }
+        })
+        console.log(result.join(" "));
+        
+             
+    })
+}
+main()
