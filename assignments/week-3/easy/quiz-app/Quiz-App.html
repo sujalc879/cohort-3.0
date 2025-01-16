@@ -1,0 +1,194 @@
+<!-- 
+# Quiz-App
+
+Your task is to design and implement a Quiz application that meets the following requirements:
+
+- The UI should resemble the example shown [here](https://utfs.io/f/032c6baa-e76a-4e26-b6b2-f6a105c15f03-pym7du.webm)
+
+- display the result after submitting the quiz.
+
+- you don't need to use api or backend, use data mentioned in `data.js`
+
+
+### Don't copy UI as it is, only take reference from it. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        main {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box {
+            width: 900px;
+            height: 600px;
+            border: 2px solid black;
+            box-shadow: 1px 1px 5px 7px lightblue;
+            border-radius: 15px;
+            background-color: aliceblue;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .question {
+            margin: 37px auto 0px auto;
+        }
+
+        .answer-option {
+            display: flex;
+            width: 90%;
+            height: 50%;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+
+        .answer-option div {
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+        }
+        .submit {
+            width: 90%;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #next-btn {
+            border: 2px solid black;
+            padding: 9px 40px;
+            border-radius: 20px;
+            font-size: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            background-color: #d0f3ff;
+        }
+        #next-btn:hover {
+            background-color: #76ddff;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="box">
+            <div class="question"><h1>Which language runs in a web browser ?</h1></div>
+            <div class="answer-option">
+                
+            </div>
+            <div class="submit">
+                <button id="next-btn">Next</button>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+    import { quizData } from './data.js';
+
+    let questionElement = document.getElementsByClassName(".question");
+    let answerButton = document.getElementsByClassName(".answer-option");
+    let nextButton = document.getElementsByClassName("#next-btn");
+    
+    let currentQuestionIndex = 0;
+    let score = 0
+
+    function startQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    nextButton.innerHTML = "Next"
+    showQuestion();
+    }
+    startQuiz()
+
+    function showQuestion() {
+        let currentQuestion = quizData[currentQuestionIndex].question;
+        console.log(currentQuestion);
+        let questionNo = currentQuestionIndex + 1;
+
+        questionElement.innerHTML = questionNo + ". " + currentQuestion;
+        
+        let optionA = quizData[currentQuestionIndex].a;
+        let optionB = quizData[currentQuestionIndex].b;
+        let optionC = quizData[currentQuestionIndex].c;
+        let optionD = quizData[currentQuestionIndex].d;
+
+
+        let h2El1 = document.createElement("h2");
+        h2El1.innerHTML = optionA
+        let h2El2 = document.createElement("h2");
+        h2El2.innerHTML = optionB
+        let h2El3 = document.createElement("h2");
+        h2El3.innerHTML = optionC
+        let h2El4 = document.createElement("h2");
+        h2El4.innerHTML = optionD
+
+        let inputEl1 = document.createElement("input")
+        inputEl1.setAttribute("type", "ratio");
+        inputEl1.setAttribute("name", "quiz");
+        inputEl1.setAttribute("id", "option-1");
+        inputEl1.setAttribute("value", "Option-1");
+        
+        
+        let inputEl2 = document.createElement("input")
+        inputEl2.setAttribute("type", "ratio");
+        inputEl2.setAttribute("name", "quiz");
+        inputEl2.setAttribute("id", "option-2");
+        inputEl2.setAttribute("value", "Option-2");
+        
+        
+        let inputEl3 = document.createElement("input")
+        inputEl3.setAttribute("type", "ratio");
+        inputEl3.setAttribute("name", "quiz");
+        inputEl3.setAttribute("id", "option-3");
+        inputEl3.setAttribute("value", "Option-3");
+        
+        
+        let inputEl4 = document.createElement("input")
+        inputEl4.setAttribute("type", "ratio");
+        inputEl4.setAttribute("name", "quiz");
+        inputEl4.setAttribute("id", "option-4");
+        inputEl4.setAttribute("value", "Option-4");
+
+
+
+        
+        let lableEl1 = document.createElement("label");
+        lableEl1.setAttribute("for", "option-1")
+        
+        let lableEl2 = document.createElement("label");
+        lableEl1.setAttribute("for", "option-2")
+        
+        let lableEl3 = document.createElement("label");
+        lableEl1.setAttribute("for", "option-3")
+        
+        let lableEl4 = document.createElement("label");
+        lableEl1.setAttribute("for", "option-4")
+
+
+
+        let divEl1 = document.createElement("div");
+        let divEl2 = document.createElement("div");
+        let divEl3 = document.createElement("div");
+        let divEl4 = document.createElement("div");
+
+        divEl1.innerHTML = "fhfdh"
+        answerButton.appendChild(divEl1)
+        
+
+    }
+    </script>
+</body>
+</html>
