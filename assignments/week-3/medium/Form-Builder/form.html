@@ -1,0 +1,162 @@
+<!-- 
+# Form-Builder
+
+- Your task is to a form builder that allows users to add different types of input fields dynamically. Include options for text inputs, checkboxes, and radio buttons. Each added field should be displayed in a preview area.
+
+
+- The UI should resemble the example shown below..
+
+![Image](https://utfs.io/f/9174ecc0-b9c4-454c-9db6-2d6f1ed6138d-ng35bm.png)
+
+
+
+### Don't copy UI as it is, only take reference from it.
+
+
+ -->
+
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Builder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .form {
+            height: 60%;
+            width: 45%;
+            border: 2px solid black;
+            border-radius: 10px;
+            background-color: rgb(220, 238, 196);
+            box-shadow: 5px 7px 5px 3px #848484;
+        }
+
+        .formBuilder {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #inputOption {
+            width: 100%;
+            height: 35px;
+            border-radius: 7px;
+        }
+
+        #fieldLable {
+            width: 100%;
+            height: 30px;
+            border-radius: 7px;
+        }
+
+        #submitButton {
+            width: 120px;
+            height: 35px;
+            border-radius: 20px;
+            background: #e1feee;
+            transition: all 0.1s;
+        }
+        #submitButton:hover {
+            background: #bdf5d6;
+            scale: 1.1;
+            cursor: pointer;
+            
+        }
+        .formPreview {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .formPreview h1 {
+            margin: 30px auto;
+        }
+    </style>
+</head>
+<body>
+<main>
+   <div class="formBuilder form">
+    <h1>Form Builder</h1>
+    <div class="inputArea">
+        <form>
+            <label for="cars"><h2 style="width: 926px; margin: 0px 0px 15px 0px;">Choose input Field Type : </h2></label>
+            <select name="inputOption" id="inputOption">
+              <option value="Text-Input">Text Input</option>
+              <option value="Number">Number</option>
+              <option value="Password">Password</option>
+            </select>
+          </form>
+    </div>
+    <div class="lableArea">
+        <label for="cars"><h2 style="width: 926px; margin: 0px 0px 15px 0px;">Field Lable : </h2></label>
+        <input type="text" name="fieldLable" id="fieldLable" placeholder="Enter Field Lable" style="text-indent: 10px;">
+    </div>
+    <button id="submitButton">submit</button>
+</div>
+<div class="formPreview form">
+  <h1>Form Preview</h1>
+</div>
+</main>
+
+
+
+
+
+<script>
+    let submitButton = document.getElementById("submitButton");
+
+    submitButton.addEventListener("click", () => {
+
+        if (document.getElementById("fieldLable").value.length == 0) {
+            alert("Field Lable is Required")
+        } else {
+            
+            
+            let formBuilderValue = document.getElementById("inputOption").value;
+            console.log(formBuilderValue);
+            let formPreview = document.querySelector(".formPreview");
+            let lableEl = document.createElement("lable");
+            lableEl.innerHTML = document.getElementById("fieldLable").value;
+            
+            let TextInput = document.createElement("input");
+            TextInput.setAttribute("type", "text");
+            
+            let NumberInput = document.createElement("input");
+        NumberInput.setAttribute("type", "number")
+        
+        let PasswordInput = document.createElement("input");
+        PasswordInput.setAttribute("type", "password")
+        
+        if (formBuilderValue === "Text-Input") {
+            formPreview.appendChild(lableEl);
+            formPreview.appendChild(TextInput);
+            
+        } else if (formBuilderValue === "Number") {
+            formPreview.appendChild(lableEl);
+            formPreview.appendChild(NumberInput);
+        } else if (formBuilderValue === "Password") {
+            formPreview.appendChild(lableEl);
+            formPreview.appendChild(PasswordInput);
+        }
+        
+        document.getElementById("fieldLable").value = "";
+    }
+     })
+</script>
+</body>
+</html>
