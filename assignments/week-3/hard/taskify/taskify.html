@@ -1,0 +1,240 @@
+<!-- 
+# Taskify
+
+- Create a Task Management Application with drag-drop functionality between the category.
+
+- you can avoid time, and type of TODO (easy, medium, hard).
+
+
+- The UI should resemble the example shown below..
+
+![Image](https://utfs.io/f/c63f4dc5-6833-4c65-9b07-e1421d833ee2-ng18dw.png)
+
+
+
+### Don't copy UI as it is, only take reference from it.
+
+
+ -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskify</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        main {
+            height: 100vh;
+            width: 100vw;
+            background-color: rgb(226, 226, 226);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .card {
+            width: 22%;
+            height: 90%;
+            border: 1px solid black;
+            border-radius: 8px;
+            background-color:  rgb(255, 213, 213);
+            box-shadow: 1px 2px 5px 1px #000000;
+        }
+
+        .todoProcess {
+            margin: 10px auto;
+            text-indent: 15px;
+        }
+
+        .todoCard {
+            width: 100%;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .actualTodosHere {
+            width: 90%;
+            height: 30%;
+            border: 2px solid black;
+            border-radius: 10px;
+            margin: 10px 0px;
+            background-color: #f0ffe2;
+        }
+        .todoTitle {
+            width: 100%;
+            height: 25%;
+            display: flex;
+            align-items: center;
+            text-indent: 20px;
+            margin: 10px 0px;
+        }
+
+        .todoDescription {
+            width: 97%;
+            height: 35%;
+            text-indent: 15px;
+            font-size: large;
+            overflow: auto;
+        }
+
+        .todoOther {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .todoProgress {
+            width: 25%;
+            border: 2px solid;
+            border-radius: 20px;
+            text-align: center;
+            background-color: #ffc580;
+            font-weight: 700;
+        }
+
+        .todoDate {
+            font-weight: 600;
+        }
+
+        .todoTime {
+            font-weight: 600;
+        }
+
+        .newTodoButton {
+            height: 5%;
+            width: auto;
+            border: 1px solid black;
+            border-radius: 7px;
+            background-color: #c6ffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            cursor: pointer;
+            text-indent: 10px;
+            transition: all 0.1s;
+            margin: 65px 5px 0px 5px;
+
+        }
+
+        .newTodoButton:hover {
+            background-color: #80ffff;
+        }
+
+        .newTodoButton img {
+            height: 65%;
+            margin: 0px 10px 0px 0px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="card">
+            <div class="todoProcess"><h2>New Todo</h2></div>
+            <div class="todoCard">
+                <div class="actualTodosHere">
+                    <div class="todoTitle"><h2>fhzdf</h2></div>
+                    <div class="todoDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla fap.</div>
+                    <div class="todoOther">
+                        <div class="todoProgress">Medium</div>
+                        <div class="todoDate">17/01/2025</div>
+                        <div class="todoTime">1 hr ago</div>
+                    </div>
+                </div>
+            </div>
+            <div class="newTodoButton">Add New Todo <img class="plusIcon" src="plusIcon.svg"></div>
+        </div>
+
+
+    </main>
+
+
+<script>
+    let addNewTodoButton = document.querySelector(".newTodoButton");
+    addNewTodoButton.addEventListener("click", () => {
+        let enterTitlle = prompt("Enter Todo Title");
+        let enterDescription = prompt("Enter Todo Description");
+        
+        let divCard = document.createElement("div");
+        divCard.setAttribute("class", "card");
+
+        let divTodoProcess = document.createElement("div");
+        divTodoProcess.setAttribute("class", "todoProcess");
+        
+        let newTodoH2 = document.createElement("h2");
+        
+        let todoCard = document.createElement("div");
+        todoCard.setAttribute("class", "todoCard");
+
+        let actualTodosHere = document.createElement("div");
+        actualTodosHere.setAttribute("class", "actualTodosHere");
+
+        let todoTitle = document.createElement("div");
+        todoTitle.setAttribute("class", "todoTitle");
+        
+        let todoTitleH2 = document.createElement("h2");
+
+        let todoDescription = document.createElement("div");
+        todoDescription.setAttribute("class", "todoDescription");
+
+        let todoOther = document.createElement("div");
+        todoOther.setAttribute("class", "todoOther");
+
+        let todoProgress = document.createElement("div");
+        todoProgress.setAttribute("class", "todoProgress");
+
+        let todoDate = document.createElement("div");
+        todoDate.setAttribute("class", "todoDate");
+
+        let todoTime = document.createElement("div");
+        todoTime.setAttribute("class", "todoTime");
+
+        let newTodoButton = document.createElement("div");
+        newTodoButton.setAttribute("class", "newTodoButton");
+
+        let plusIcon = document.createElement("img");
+        plusIcon.setAttribute("class", "plusIcon");
+        plusIcon.setAttribute("src", "plusIcon.svg");
+
+
+
+
+
+
+        todoTitleH2.innerHTML = `${enterTitlle}`;
+        todoDescription.innerHTML = `${enterDescription}`;
+        newTodoH2.innerHTML = "New Todo";
+        todoProgress.innerHTML = "Medium";
+        todoDate.innerHTML = "17/01/2025";
+        todoTime.innerHTML = "1 hr ago"
+
+
+
+
+        let actualTodoCard = document.querySelector(".todoCard");
+        actualTodoCard.appendChild(actualTodosHere);
+
+        actualTodosHere.appendChild(todoTitle);
+        todoTitle.appendChild(todoTitleH2)
+        actualTodosHere.appendChild(todoDescription);
+        actualTodosHere.appendChild(todoOther);
+        todoOther.appendChild(todoProgress);
+        todoOther.appendChild(todoDate);
+        todoOther.appendChild(todoTime);
+
+
+
+
+    })
+</script>
+</body>
+</html>

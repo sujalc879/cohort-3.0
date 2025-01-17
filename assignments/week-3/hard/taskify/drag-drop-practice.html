@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>drag drop Practice</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        main {
+            height: 100vh;
+            width: 100vw;
+            background-color: rgb(180, 238, 219);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .common {
+            height: 50%;
+            width: 20%;
+            border: 2px solid black;
+            border-radius: 10px;
+            background: #e5e2ff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .commonDiv {
+            width: 85%;
+            height: 15%;
+            border: 2px solid black;
+            border-radius: 6px;
+            margin: 15px 0px;
+            background: #ff6161;
+            display: flex;
+            align-items: center;
+            text-indent: 25px;
+            cursor: grab;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div id="left" class="common">
+            <div class="commonDiv" draggable="true"> <h2>1</h2></div>
+            <div class="commonDiv" draggable="true"> <h2>2</h2></div>
+            <div class="commonDiv" draggable="true"> <h2>3</h2></div>
+            <div class="commonDiv" draggable="true"> <h2>4</h2></div>
+        </div>
+        <div id="right" class="common">
+            
+        </div>
+    </main>
+
+    <script>
+        let commonDiv = document.getElementsByClassName("commonDiv");
+        let rightBox = document.getElementById("right");
+        let leftBox = document.getElementById("left");
+
+        for (const element of commonDiv) {
+            element.addEventListener("dragstart", (e) => {
+                let selected = e.target;
+                
+                rightBox.addEventListener("dragover", (e) => {
+                    e.preventDefault();
+                });
+
+                rightBox.addEventListener("drop", () => {
+                    rightBox.appendChild(selected);
+                    selected = null;
+                });
+                
+                leftBox.addEventListener("dragover", (e) => {
+                    e.preventDefault();
+                });
+
+                leftBox.addEventListener("drop", () => {
+                    leftBox.appendChild(selected);
+                    selected = null;
+                });
+                
+            })
+        }
+        
+    </script>
+</body>
+</html>
