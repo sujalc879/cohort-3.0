@@ -207,7 +207,7 @@
             <div class="todoProcess">
                 <h2>New Todo</h2>
             </div>
-            <div class="todoCard">
+            <div class="todoCard" id="box-1">
                 <div class="actualTodosHere" draggable="true">
                     <div class="todoTitle">
                         <h2>Go To Gym</h2>
@@ -241,7 +241,7 @@
             <div class="todoProcess">
                 <h2>In Progress</h2>
             </div>
-            <div class="todoCard">
+            <div class="todoCard" id="box-2">
                 <div class="actualTodosHere" draggable="true">
                     <div class="todoTitle">
                         <h2>Study</h2>
@@ -275,7 +275,7 @@
             <div class="todoProcess">
                 <h2>Under Review</h2>
             </div>
-            <div class="todoCard">
+            <div class="todoCard" id="box-3">
                 <div class="actualTodosHere" draggable="true">
                     <div class="todoTitle">
                         <h2>College Attendance</h2>
@@ -336,7 +336,7 @@
             <div class="todoProcess">
                 <h2>Finished</h2>
             </div>
-            <div class="todoCard">
+            <div class="todoCard" id="box-4">
                 <div class="actualTodosHere" draggable="true">
                     <div class="todoTitle">
                         <h2>Code Taskify</h2>
@@ -659,7 +659,58 @@
 
 
         // Lets Add drag-drop Functionality
-        
+        let box1 = document.getElementById("box-1");
+        let box2 = document.getElementById("box-2");
+        let box3 = document.getElementById("box-3");
+        let box4 = document.getElementById("box-4");
+        document.addEventListener('dragstart', function (e) {
+            if (e.target && e.target.classList.contains('actualTodosHere')) {
+                let selected = e.target;
+                
+                box1.addEventListener("dragover", (e) => {
+                    e.preventDefault();
+                });
+
+                box1.addEventListener("drop", () => {
+                    box1.appendChild(selected);
+                    selected = null;
+                });
+
+
+
+                box2.addEventListener("dragover", (e) => {
+                    e.preventDefault();
+                });
+
+                box2.addEventListener("drop", () => {
+                    box2.appendChild(selected);
+                    selected = null;
+                });
+
+
+
+                box3.addEventListener("dragover", (e) => {
+                    e.preventDefault();
+                });
+
+                box3.addEventListener("drop", () => {
+                    box3.appendChild(selected);
+                    selected = null;
+                });
+
+
+
+                box4.addEventListener("dragover", (e) => {
+                    e.preventDefault();
+                });
+
+                box4.addEventListener("drop", () => {
+                    box4.appendChild(selected);
+                    selected = null;
+                });
+
+            }
+        })
         
 
 
