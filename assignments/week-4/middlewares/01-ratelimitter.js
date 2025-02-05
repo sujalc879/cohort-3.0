@@ -13,8 +13,24 @@ const app = express();
 
 let numberOfRequestsForUser = {};
 setInterval(() => {
-    numberOfRequestsForUser = {};
+  numberOfRequestsForUser = {};
 }, 1000)
+
+app.use((req, res, next) => {
+  let UserId = req.headers["user-id"];
+  if (numberOfRequestsForUser[UserId]) {
+    numberOfRequestsForUser[UserId]+=1;
+    if (numberOfRequestsForUser[UserId] < 6) {
+      next();
+    } else {
+     res.status(404).send("Access Denied");
+    }
+    
+  } else {
+    numberOfRequestsForUser[UserId] = 1;
+    next();
+  }
+})
 
 app.get('/user', function(req, res) {
   res.status(200).json({ name: 'john' });
