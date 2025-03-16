@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import { getAllTodo, createTodo, updateTodo, deleteTodoById, searchTodo } from './routes/todo.js';
+import { getAllTodo, createTodo, updateTodo, deleteTodo, deleteTodoById, searchTodo } from './routes/todo.js';
 const app = express();
 const PORT = 3001;
 
@@ -17,7 +17,10 @@ app.post('/todos', createTodo);
 // Update a todo
 app.put('/todos/:id', updateTodo);
 
-// Delete a todo
+// Deletes all todos
+app.delete('/todos', deleteTodo)
+
+// Delete one todo
 app.delete('/todos/:id', deleteTodoById);
 
 // Search todos

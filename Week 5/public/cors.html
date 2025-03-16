@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cors</title>
+</head>
+
+<body>
+    <input id="a" type="text" placeholder="firstValue">
+    <input id="b" type="text" placeholder="secondValue">
+
+    <button onclick="sum()">find sum</button>
+    <script>
+        async function sum() {
+            let firstValue = document.querySelector("#a").value;
+            let secondValue = document.querySelector("#b").value;
+
+            let link = await fetch("http://127.0.0.1:3001/sum", {
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json; charset=utf-8"
+                },
+                "body": JSON.stringify({
+                    a: firstValue,
+                    b: secondValue
+                })
+            })
+
+            let data = await link.json();
+
+            console.log(data);
+
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        .todo-container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .todo-item {
+            display: inline-block;
+            margin-right: 20px;
+            padding: 8px 15px;
+            background-color: #e6f3ff;
+            border-radius: 3px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .todo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .todo-item:active {
+            transform: translateY(0);
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .todo-icon {
+            font-size: 24px;
+            color: #7f87b2;
+            margin-bottom: 5px;
+        }
+
+        .todo-text {
+            font-size: 16px;
+            color: #3c4049;
+            line-height: 1.4;
+        }
+
+        .todo-item-disabled {
+            background-color: #ffd3d8;
+        }
+
+        .description {
+            margin-top: 20px;
+            color: #5f6368;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <!-- Add your todo items here -->
+        <div id="todoItems" class="container">
+            <h2>My To-Do Items</h2>
+            <ul id="todoList"></ul>
+        </div>
+
+        <script>
+            const todoList = document.getElementById('todoList');
+            const tasks = ['Add a task', 'Complete the project', 'Design the interface'];
+
+            function addTodo(title) {
+                const todoItem = document.createElement('div');
+                todoItem.className = 'todo-item';
+                todoItem.innerHTML = `
+                    <i class="fas fa-plus"></i>
+                    <span>${title}</span>
+                    <span class="description">${title}</span>
+                `;
+                todoItems.appendChild(todoItem);
+                todoList.appendChild(todoItem);
+
+                const taskElement = document.querySelector(`[data-id="${index}"]`);
+                if (taskElement) {
+                    taskElement.textContent = title;
+                    taskElement.className = 'todo-text';
+                }
+
+                todoList.scrollTop = todoList.scrollHeight;
+            }
+
+            function updateTodo(title, state, description) {
+                todoItems.style.display = 'block';
+                const todoItem = document.querySelector(`[data-id="${index}"]`);
+                todoItem.textContent = title;
+                todoItem.className = 'todo-text';
+
+                if (state === 'completed') {
+                    todoList.style.display = 'none';
+                    todoItem.style.setProperty('color', '#7f87b2');
+                } else if (state === 'pending') {
+                    todoItem.style.setProperty('color', '#e6f3ff');
+                }
+                description = description ? (
+                    <p>${description}</p>
+                ) : null;
+
+                todoList.scrollTop = todoList.scrollHeight;
+                todoItems.style.display = 'none';
+            }
+
+            document.getElementById('todoItems').addEventListener('click', updateTodo, {
+                title: tasks[0],
+                state: 'completed',
+                description: ''
+            });
+
+            for (let i = 1; i < tasks.length; i++) {
+                document.getElementById(`todoItems-${i}`).addEventListener('click', updateTodo, {
+                    title: tasks[i],
+                    state: 'pending',
+                    description: `Completing ${i + 1}th task`
+                });
+            }
+
+            function showAllTodos() {
+                const todoList = document.querySelector(`[data-id=""]`);
+                if (todoList) {
+                    const listElement = document.querySelector('[data-id] > li');
+                    listElement.style.display = 'block';
+                    todoList.style.display = 'none';
+                }
+            }
+        </script>
+    </div>
+
+    <!-- <div class="description">
+        <p>This is a todo list implementation with hover effects, disabled states, and animations. You can add
+multiple tasks and manage them efficiently.</p>
+    </div> -->
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios like fetch</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <button onclick="main()">click</button>
+    <script>
+        async function main() {
+            const content = await axios.get("https://jsonplaceholder.typicode.com/todos/1");
+            console.log(content.data);
+            document.body.innerHTML = JSON.stringify(content.data);
+        }
+    </script>
+</body>
+</html>
