@@ -1,7 +1,7 @@
 
-import express from 'express';
-import cors from 'cors';
-import { addBookmark, deleteBookmark, getAllBookmarks } from './routes/bookmarks.js'; // importing callback functions for routes
+import express from "express";
+import cors from "cors";
+import { addBookmark, deleteBookmark, getAllBookmarks } from "./routes/bookmarks.js";
 const app = express();
 const PORT = 3001;
 
