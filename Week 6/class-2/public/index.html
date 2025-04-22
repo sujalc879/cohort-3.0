@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user info</title>
+</head>
+<body>
+    <section>
+        <input type="text" name="username" id="signupUsername" placeholder="enter Username Here">
+        <input type="text" name="username" id="signupPassword" placeholder="Create New Password">
+        <button id="signupSumit" onclick="signup()">submit</button>
+    </section>
+    <section>
+        <input type="text" name="username" id="signinUsername" placeholder="enter Username Here">
+        <input type="text" name="username" id="signinPassword" placeholder="Enter Your Password Here">
+        <button id="signinSumit" onclick="signin()">submit</button>
+    </section>
+    <section>
+        <h1> User Information : </h1>
+        <h2 id="info"></h2>
+    </section>
+    <section>
+        <button id="logout" onclick="logout()">Logout</button>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script>
+
+        function getUserInformation(userToken) {
+            axios.get("http://localhost:5000/me", {
+                headers : {
+                    "token" : `${userToken}`
+                }
+            })
+            .then( response => {
+                let username = response.data.username;
+                let password = response.data.password;
+
+                document.getElementById("info").innerHTML = `<h1> Username : ${username} </h1>
+                                                            <h1> Password : ${password} </h1>`
+            })
+        }
+
+        function logout() {
+            localStorage.removeItem("token");
+            document.getElementById("info").innerHTML = ""
+        }
+
+        function signup() {
+            const username = document.getElementById("signupUsername").value;
+            const password = document.getElementById("signupPassword").value;
+
+            axios.post("http://localhost:5000/signup", {
+                username : username,
+                password : password
+            })
+            .then( response => {
+                console.log(response.data.Message)
+                alert("you are sign up");
+            });
+             
+        }
+
+        function signin() {
+            const username = document.getElementById("signupUsername").value;
+            const password = document.getElementById("signupPassword").value;
+
+            axios.post("http://localhost:5000/signin", {
+                username : username,
+                password : password
+            })
+            .then( response => {
+                alert("you are sign in");
+                localStorage.setItem("token", response.data.token)
+                let token = localStorage.getItem("token")
+                getUserInformation(token)
+            });
+        }
+    </script>
+</body>
+</html>
