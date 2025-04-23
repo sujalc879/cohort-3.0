@@ -8,7 +8,7 @@ const { auth, JWT_SECRET } = require('./auth');
 const app = express();
 const PORT = 3000;
 
-mongoose.connect("mongodb+srv://sujalchaudhari879:3fzQkpghlANTriGL@cluster0.icedcdv.mongodb.net/todo_app")
+mongoose.connect("")
 .then(() => { console.log("the database is connected") })
 .catch((error) => {console.log(error) });
 
