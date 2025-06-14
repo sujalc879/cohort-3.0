@@ -82,14 +82,44 @@ app.post("/signin",async function (req, res) {
 // authenticated endpoints
 app.use(auth);
 
-app.post("/todo", function (req, res) {
+app.post("/todo",async function (req, res) {
     const userId = req.userId;
-    res.json({ userId });
+    const title = req.body.title;
+    try {
+        await TodoModel.create({
+            userId : userId,
+            title : title,
+            done : false
+        })
+        
+        res.json({ Message : "The todo Created Successfully"});
+    } catch (error) {
+        res.status(403).json({ Message : "The todo is not Created Successfully"});
+    }
+
+
 })
 
-app.get("/todos", function (req, res) {
+app.get("/todos",async function (req, res) {
     const userId = req.userId;
-    res.json({ userId });
+
+    try {
+        const user = await TodoModel.find({ userId : userId });
+        
+        const result = user.map((value) => {
+            return {
+                title : value.title,
+                done : value.done
+            };
+        });
+    
+        res.json(result);
+        
+    } catch (error) {
+        res.status(403).json({ Message : "Featching Todos Problem"});
+    }
+
+    
 })
 
 app.listen(PORT, () => { console.log("the server is listining on port " + PORT) })
