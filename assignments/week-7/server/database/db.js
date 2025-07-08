@@ -14,7 +14,9 @@ const userSchema = new Schema({
     password : {
       type : String,
       required : true
-    }
+    },
+    purchasedCourses: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }]
+
 }, { strict: false } );
 
 const adminSchema = new Schema({
@@ -37,6 +39,10 @@ const courseSchema = new Schema({
   price: Number, 
   imageLink: String, 
   published: Boolean,
+  createdBy: {
+    type : ObjectId,
+    ref : "Admin"
+  }
 
 }, {timestamps : true});
 

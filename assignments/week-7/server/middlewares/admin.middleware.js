@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
-const secret = process.env.JWT_SECRET;
+const JWT_SECRET_FOR_ADMIN = process.env.JWT_SECRET_FOR_ADMIN;
 
 
-async function authMiddleware(req, res, next) {
+async function adminMiddleware(req, res, next) {
 //  authMiddleware logic here 
 const authHeader = req.headers.authorization;
 
@@ -14,19 +14,19 @@ if (!authHeader || !authHeader.startsWith("Bearer ")) {
     try {
         const token = authHeader.split(" ")[1];
     
-        const decoded = jwt.verify(token, secret);
+        const decoded = jwt.verify(token, JWT_SECRET_FOR_ADMIN);
     
         req.userId = decoded.adminUserId;
     
         next();
         
     } catch (error) {
-        res.json({ Message : "invalid credentials"});
+        res.json({ Message : "invalid credentials of admin"});
     }
 }
 
 };
 
 module.exports = {
-    authMiddleware
+    adminMiddleware
 }
