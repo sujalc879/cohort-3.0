@@ -4,15 +4,15 @@ const app = express();
 const mongoose = require('mongoose');
 const { adminSignup, adminLogin, adminCourses, editCourses, allCourses, userSignup, userLogin, purchasingCourses, purchasedCourses } = require('./routes/route');
 const { authMiddleware } = require("./middlewares/auth");
+const dotenv = require('dotenv');
+dotenv.config();
 
 app.use(express.json());
 
 
-const port = process.env.PORT;
+const PORT = process.env.PORT;
 
 
-// Connect to MongoDB
-mongoose.connect(''); // ( remember with database name )
 
 
 // Admin routes
@@ -37,6 +37,14 @@ app.post('/users/courses/:courseId',authMiddleware, purchasingCourses);
 
 app.get('/users/purchasedCourses', authMiddleware, purchasedCourses);
 
-app.listen(port, () => {
-    console.log('Server is listening on port ' + port);
+
+async function main() {
+
+// Connect to MongoDB
+await mongoose.connect(process.env.MONGODB_URL);
+
+app.listen(PORT, () => {
+    console.log('Server is listening on PORT ' + PORT);
 });
+}
+main();

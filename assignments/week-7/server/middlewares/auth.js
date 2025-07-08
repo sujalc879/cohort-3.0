@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
-const secret = process.env.JWT_SECRET;  // This should be in an environment variable in a real application ( remember )
+const secret = process.env.JWT_SECRET;
 
 
 async function authMiddleware(req, res, next) {
