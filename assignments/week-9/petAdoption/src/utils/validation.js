@@ -8,8 +8,8 @@ export const validation = (name, value, errors) => {
             errors.breed =
                 value.length < 3 ? "Breed must be at least 3 characters" : "";
             break;
-        case "adopterName":
-            errors.adopterName =
+        case "name":
+            errors.name =
                 value.length < 3 ? "Your Name must be at least 3 characters" : "";
             break;
         case "email":

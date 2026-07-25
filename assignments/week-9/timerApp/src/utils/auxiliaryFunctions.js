@@ -1,4 +1,4 @@
-export const formatTime = (totalSeconds) => {
+export default function formatTime(totalSeconds)  {
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
@@ -9,7 +9,7 @@ export const formatTime = (totalSeconds) => {
     }
 }
 
-export const calculateTime = (hours, minutes, seconds) => {
+export function calculateTime(hours, minutes, seconds)  {
     const calculatedTime = parseInt(hours) * 3600 +
         parseInt(minutes) * 60 + parseInt(seconds);
 

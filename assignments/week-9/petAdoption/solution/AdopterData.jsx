@@ -5,7 +5,7 @@ class AdopterData extends Component {
         const { formData, handleGoBack } = this.props;
         return (
             <div>
-                <table styele={{
+                <table style={{
                     borderCollapse: "collapse",
                     width: "100%",
                     border: "1px solid #ddd",
